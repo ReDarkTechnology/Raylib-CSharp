@@ -40,6 +40,29 @@ public struct Rectangle {
         this.Height = height;
     }
 
+    public Rectangle(ConstructMode mode, Vector2 left, Vector2 right) {
+        switch (mode) {
+            case ConstructMode.Centered:
+                this.X = left.X - (right.X / 2);
+                this.Y = left.Y - (right.Y / 2);
+                this.Width = right.X;
+                this.Height = right.Y;
+                break;
+            case ConstructMode.TopLeftScale:
+                this.X = left.X;
+                this.Y = left.Y;
+                this.Width = right.X;
+                this.Height = right.Y;
+                break;
+            case ConstructMode.TopLeftBottomRight:
+                this.X = left.X;
+                this.Y = left.Y;
+                this.Width = right.X - left.X;
+                this.Height = right.Y - left.Y;
+                break;
+        }
+    }
+
     /// <summary>
     /// Gets or sets the position of the top-left corner of the rectangle.
     /// </summary>
@@ -66,5 +89,11 @@ public struct Rectangle {
 
     public override string ToString() {
         return $"X:{this.X} Y:{this.Y} Width:{this.Width} Height:{this.Height}";
+    }
+
+    public enum ConstructMode {
+        Centered,
+        TopLeftScale,
+        TopLeftBottomRight
     }
 }
