@@ -4675,7 +4675,7 @@ internal static partial class RaylibApi {
     [LibraryImport(Raylib.Name)]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     [return: MarshalAs(UnmanagedType.I1)]
-    internal static partial bool IsTextureReady(Texture2D texture);
+    internal static partial bool IsTextureValid(Texture2D texture);
 
     /// <summary>
     /// Unload texture from GPU memory (VRAM).
